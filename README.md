@@ -20,3 +20,11 @@ Un sistema backend de alta concurrencia diseñado para manejar la venta masiva d
 ## 📁 Estructura del Proyecto
 
 El proyecto sigue los principios de **Clean Architecture** para mantener el dominio completamente aislado de los frameworks y la infraestructura (bases de datos, colas, protocolos HTTP).
+
+## 👨‍💻 Autor
+
+**Johan Sebastian Vasquez Diaz**  
+_Desarrollador Fullstack | Tecnólogo en Sistemas de Información_
+
+- **LinkedIn:** [Johan Sebastian Vasquez Diaz](https://www.linkedin.com/in/johan98vdiaz/)
+- **GitHub:** [@tu-usuario-github](https://github.com/diazjohan98)
