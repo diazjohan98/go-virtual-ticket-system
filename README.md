@@ -27,4 +27,4 @@ El proyecto sigue los principios de **Clean Architecture** para mantener el domi
 _Desarrollador Fullstack | Tecnólogo en Sistemas de Información_
 
 - **LinkedIn:** [Johan Sebastian Vasquez Diaz](https://www.linkedin.com/in/johan98vdiaz/)
-- **GitHub:** [@tu-usuario-github](https://github.com/diazjohan98)
+- **GitHub:** [@diazjohan98](https://github.com/diazjohan98)
