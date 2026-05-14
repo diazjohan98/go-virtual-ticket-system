@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  # Base de Datos Principal
+  mysql_db:
+    image: mysql:8.0
+    container_name: ticket_mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=ticket_system_db
+      - MYSQL_USER=user_johan
+      - MYSQL_PASSWORD=user_password
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  # El Muro de Contención (Redis)
+  redis_cache:
+    image: redis:7.0-alpine
+    container_name: ticket_redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  db_data:
+  redis_data:
