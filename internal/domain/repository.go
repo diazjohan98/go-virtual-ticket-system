@@ -8,6 +8,11 @@ type EventRepository interface {
 }
 
 type TicketRepository interface {
+	Create(ctx context.Context, ticket *Ticket) error
+	UpdateStatus(ctx context.Context, id string, status TicketStatus) error
+}
+
+type QueueRepository interface {
 	Enqueue(ctx context.Context, eventID string, userID string) error
 	Dequeue(ctx context.Context, eventID string) (string, error)
 	GetPosition(ctx context.Context, eventID string, userID string) (int, error)
