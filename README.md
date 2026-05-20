@@ -1,25 +1,53 @@
-# 🎟️ Virtual Queue System (Sistema de Fila Virtual)
+# High-Concurrency Virtual Queue System (Backend) 🚀
 
-Un sistema backend de alta concurrencia diseñado para manejar la venta masiva de entradas (ej. festivales de música) sin bloquear la base de datos, implementando una sala de espera en tiempo real.
+Este es el motor de alta concurrencia diseñado en **Go (Golang)** que maneja el flujo de usuarios e inventario para la venta masiva de boletos en eventos de alta demanda. Utiliza una arquitectura robusta para mitigar la sobrecarga de la base de datos principal mediante un sistema de colas asíncronas.
 
-## 🚀 Tecnologías
+## 🧠 Arquitectura y Patrones
 
-- **Backend:** Go (Golang)
-- **Base de Datos Relacional:** MySQL
-- **Caché / Cola de mensajes:** Redis
-- **Comunicación en Tiempo Real:** Server-Sent Events (SSE)
-- **Frontend:** React (Próximamente)
-- **Arquitectura:** Clean Architecture
+El proyecto está construido bajo los principios de **Clean Architecture** (Arquitectura Limpia), garantizando el desacoplamiento total entre la lógica de negocio, los frameworks y los motores de bases de datos.
 
-## 🧠 Arquitectura y Flujo
+- **Dominio (Domain):** Entidades puras e interfaces (contratos) del sistema.
+- **Casos de Uso (Usecases):** Orquestación de la lógica de negocio (ej. validación e ingreso a la fila).
+- **Infraestructura (Infrastructure):** Implementaciones concretas de las bases de datos (MySQL y Redis) y el Worker asíncrono.
+- **Delivery (HTTP):** Manejo de peticiones y respuestas mediante handlers desacoplados.
 
-1. **El Muro (Redis):** Cuando miles de usuarios intentan comprar al mismo tiempo, el servidor HTTP de Go no consulta a MySQL. Encola a los usuarios en Redis, respondiendo en milisegundos.
-2. **Workers (Goroutines):** Un _pool_ de workers en Go procesa la cola de Redis de forma asíncrona, controlando el flujo exacto de peticiones que llegan a MySQL para evitar sobrecargas y ventas dobles (_overselling_).
-3. **Sala de Espera (SSE):** El cliente de React mantiene una conexión unidireccional con Go a través de Server-Sent Events, recibiendo actualizaciones en tiempo real sobre su turno en la fila.
+## 🛠️ Tecnologías Utilizadas
 
-## 📁 Estructura del Proyecto
+- **Go (Golang):** Lenguaje principal, aprovechando las _Goroutines_ y _Contexts_ para concurrencia eficiente.
+- **Redis:** Utilizado como buffer de alta velocidad (In-Memory) para gestionar la fila virtual mediante estructuras FIFO.
+- **MySQL:** Base de datos relacional para la persistencia firme y el control estricto del inventario final de boletos.
+- **Docker & Docker Compose:** Containerización de la infraestructura local para garantizar un entorno idéntico a producción.
 
-El proyecto sigue los principios de **Clean Architecture** para mantener el dominio completamente aislado de los frameworks y la infraestructura (bases de datos, colas, protocolos HTTP).
+## 🚀 Cómo Ejecutar el Backend
+
+### Prerrequisitos
+
+- Go (v1.20 o superior)
+- Docker Desktop
+
+### Pasos
+
+1. Clonar el repositorio.
+2. Crear un archivo `.env` en la raíz basado en el archivo `.env.example`.
+3. Levantar la infraestructura de bases de datos con Docker:
+   ```bash
+   docker-compose up -d
+   ```
+4. Sincronizar las dependencias de Go:
+
+```
+Bash
+go mod tidy
+```
+
+5. Arrancar el servidor HTTP y el Worker asíncrono:
+
+```
+Bash
+go run cmd/api/main.go
+```
+
+El servidor estará escuchando de forma segura en http://localhost:8080.
 
 ## 👨‍💻 Autor
 
