@@ -2,7 +2,10 @@ module github.com/diazjohan98/go-virtual-queue-system
 
 go 1.25.0
 
-require github.com/go-sql-driver/mysql v1.10.0
+require (
+	github.com/go-sql-driver/mysql v1.10.0
+	github.com/joho/godotenv v1.5.1
+)
 
 require (
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
