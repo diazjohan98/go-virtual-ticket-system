@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/tu-usuario-github/go-virtual-queue-system/internal/domain"
+	"github.com/diazjohan98/go-virtual-queue-system/internal/domain"
 )
 
 type QueueWorker struct {
@@ -41,7 +41,7 @@ func (w *QueueWorker) Start(ctx context.Context, eventID string) {
 				continue
 			}
 
-			log.Printf("Fila avanzando: Procesando compra para el usuario %s:", &userID)
+			log.Printf("Fila avanzando: Procesando compra para el usuario %s", userID)
 
 			err = w.eventRepo.DecrementAvailableTickets(ctx, eventID)
 			if err != nil {
@@ -49,7 +49,7 @@ func (w *QueueWorker) Start(ctx context.Context, eventID string) {
 				continue
 			}
 
-			log.Printf("Compra exitosa confirmada en MySQL para el usuario %s:", &userID)
+			log.Printf("Compra exitosa confirmada en MySQL para el usuario %s", userID)
 		}
 	}
 }
