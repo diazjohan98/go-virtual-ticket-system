@@ -2,6 +2,8 @@
 
 Este es el motor de alta concurrencia diseñado en **Go (Golang)** que maneja el flujo de usuarios e inventario para la venta masiva de boletos en eventos de alta demanda. Utiliza una arquitectura robusta para mitigar la sobrecarga de la base de datos principal mediante un sistema de colas asíncronas.
 
+> 🖥️ **¿Buscas el Frontend?** Puedes ver la interfaz de usuario en el siguiente repositorio: [react-virtual-ticket-system](https://github.com/diazjohan98/react-virtual-ticket-system.git)
+
 ## 🧠 Arquitectura y Patrones
 
 El proyecto está construido bajo los principios de **Clean Architecture** (Arquitectura Limpia), garantizando el desacoplamiento total entre la lógica de negocio, los frameworks y los motores de bases de datos.
