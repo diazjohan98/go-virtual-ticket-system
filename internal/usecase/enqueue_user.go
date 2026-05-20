@@ -21,7 +21,7 @@ func NewEnqueueUserUseCase(er domain.EventRepository, qr domain.QueueRepository)
 
 func (uc *EnqueueUserUseCase) Execute(ctx context.Context, eventID string, userID string) error {
 	// Check if event exists
-	event, err := uc.eventRepo.GetBYID(ctx, eventID)
+	event, err := uc.eventRepo.GetByID(ctx, eventID)
 	if err != nil {
 		return err
 	}

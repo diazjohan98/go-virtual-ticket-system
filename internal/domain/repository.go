@@ -3,7 +3,7 @@ package domain
 import "context"
 
 type EventRepository interface {
-	GetBYID(ctx context.Context, id string) (*Event, error)
+	GetByID(ctx context.Context, id string) (*Event, error)
 	DecrementAvailableTickets(ctx context.Context, id string) error
 }
 
